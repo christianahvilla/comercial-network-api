@@ -1,0 +1,140 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Usuarios",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://swagger.local"
+        }
+    ],
+    "paths": {
+        "/api/login": {
+            "post": {
+                "summary": "Login user",
+                "operationId": "App\\Http\\Controllers\\AuthController::login",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Email",
+                        "required": true
+                    },
+                    {
+                        "name": "Password",
+                        "in": "query",
+                        "description": "Password",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Login user"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/logout": {
+            "post": {
+                "summary": "Logout user",
+                "operationId": "App\\Http\\Controllers\\AuthController::logout",
+                "responses": {
+                    "200": {
+                        "description": "Logout user"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/users": {
+            "get": {
+                "summary": "Display users",
+                "operationId": "App\\Http\\Controllers\\UserController::all",
+                "responses": {
+                    "200": {
+                        "description": "Display all users"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create user",
+                "operationId": "App\\Http\\Controllers\\UserController::store",
+                "parameters": [
+                    {
+                        "name": "firstname",
+                        "in": "query",
+                        "description": "Your first name",
+                        "required": true
+                    },
+                    {
+                        "name": "lastname",
+                        "in": "query",
+                        "description": "Your last name",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Create user"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                }
+            }
+        },
+        "/api/users/{id}": {
+            "get": {
+                "summary": "Display user",
+                "operationId": "App\\Http\\Controllers\\UserController::getUser",
+                "responses": {
+                    "200": {
+                        "description": "Display specific user"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update user",
+                "operationId": "App\\Http\\Controllers\\UserController::put",
+                "responses": {
+                    "201": {
+                        "description": "Update user"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete user",
+                "operationId": "App\\Http\\Controllers\\UserController::delete",
+                "responses": {
+                    "204": {
+                        "description": "Delete user"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                }
+            }
+        }
+    }
+}
