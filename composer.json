@@ -9,9 +9,13 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "barryvdh/laravel-cors": "^0.11.4",
+        "darkaonline/l5-swagger": "^6.0",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.0",
-        "laravel/tinker": "^1.0"
+        "laravel/passport": "^8.0",
+        "laravel/tinker": "^1.0",
+        "magentron/laravel-blade-lint": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
