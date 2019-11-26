@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Auth\Login;
 use App\Interfaces\AuthRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -10,31 +9,26 @@ class AuthController extends Controller
 {
     private $authRepository;
 
-    public function __construct(AuthRepositoryInterface $authRepository)
+    public function _construct(AuthRepositoryInterface $authRepository)
     {
         $this->authRepository = $authRepository;
     }
 
     /**
     * @OA\Post(
-    *   path="/api/auth/login",
+    *   path="/api/login",
     *   summary="Login user",
-    *   @OA\RequestBody(
-    *       @OA\MediaType(
-    *           mediaType="application/json",
-    *           @OA\Schema(
-    *               required={"email", "password"},
-    *               @OA\Property(
-    *                   property="email",
-    *                   type="string",
-    *               ),
-    *               @OA\Property(
-    *                   property="password",
-    *                   type="string",
-    *               ),
-    *               example={"email": "christianahvilla@gmail.com", "password": "13121474"}
-    *           )
-    *       )
+    *   @OA\Parameter(
+    *       name="email",
+    *       in="query",
+    *       description="Email",
+    *       required=true,
+    *   ),
+    *   @OA\Parameter(
+    *       name="Password",
+    *       in="query",
+    *       description="Password",
+    *       required=true,
     *   ),
     *   @OA\Response(
     *       response=200,

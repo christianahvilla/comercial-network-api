@@ -8,20 +8,22 @@ use App\Interfaces\UserRepositoryInterface;
 
 /**
 * @OA\Info(title="API Usuarios", version="1.0")
+*
+* @OA\Server(url="http://swagger.local")
 */
 
 class UserController extends Controller
 {
     private $userRepository;
 
-    public function __construct(UserRepositoryInterface $userRepository)
+    public function _construct(UserRepositoryInterface $userRepository)
     {
         $this->userRepository = $userRepository;
     }
 
     /**
     * @OA\Get(
-    *     path="/api/user",
+    *     path="/api/users",
     *     summary="Display users",
     *     @OA\Response(
     *         response=200,
@@ -41,7 +43,7 @@ class UserController extends Controller
 
     /**
     * @OA\Get(
-    *     path="/api/user/{id}",
+    *     path="/api/users/{id}",
     *     summary="Display user",
     *     @OA\Response(
     *         response=200,

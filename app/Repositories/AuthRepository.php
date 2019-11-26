@@ -4,17 +4,13 @@ namespace App\Repositories;
 
 use App\Http\Requests\Auth\Login;
 use App\Interfaces\AuthRepositoryInterface;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthRepository implements AuthRepositoryInterface
 {
     public function login(Login $login)
     {
-
-        $credentials = ['email' => $login->email, 'password' => $login->password];
-
-        if(Auth::attempt($credentials))
+        if(Auth::attempt($login))
         {
             $user = $login->user();
 

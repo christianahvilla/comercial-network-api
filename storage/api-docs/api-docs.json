@@ -4,36 +4,30 @@
         "title": "API Usuarios",
         "version": "1.0"
     },
+    "servers": [
+        {
+            "url": "http://swagger.local"
+        }
+    ],
     "paths": {
-        "/api/auth/login": {
+        "/api/login": {
             "post": {
                 "summary": "Login user",
                 "operationId": "App\\Http\\Controllers\\AuthController::login",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "required": [
-                                    "email",
-                                    "password"
-                                ],
-                                "properties": {
-                                    "email": {
-                                        "type": "string"
-                                    },
-                                    "password": {
-                                        "type": "string"
-                                    }
-                                },
-                                "type": "object",
-                                "example": {
-                                    "email": "christianahvilla@gmail.com",
-                                    "password": "13121474"
-                                }
-                            }
-                        }
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Email",
+                        "required": true
+                    },
+                    {
+                        "name": "Password",
+                        "in": "query",
+                        "description": "Password",
+                        "required": true
                     }
-                },
+                ],
                 "responses": {
                     "200": {
                         "description": "Login user"
@@ -64,7 +58,7 @@
                 }
             }
         },
-        "/api/user": {
+        "/api/users": {
             "get": {
                 "summary": "Display users",
                 "operationId": "App\\Http\\Controllers\\UserController::all",
@@ -76,23 +70,7 @@
                         "description": "Something when wrong"
                     }
                 }
-            }
-        },
-        "/api/user/{id}": {
-            "get": {
-                "summary": "Display user",
-                "operationId": "App\\Http\\Controllers\\UserController::getUser",
-                "responses": {
-                    "200": {
-                        "description": "Display specific user"
-                    },
-                    "500": {
-                        "description": "Something when wrong"
-                    }
-                }
-            }
-        },
-        "/api/users": {
+            },
             "post": {
                 "summary": "Create user",
                 "operationId": "App\\Http\\Controllers\\UserController::store",
@@ -121,6 +99,18 @@
             }
         },
         "/api/users/{id}": {
+            "get": {
+                "summary": "Display user",
+                "operationId": "App\\Http\\Controllers\\UserController::getUser",
+                "responses": {
+                    "200": {
+                        "description": "Display specific user"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                }
+            },
             "put": {
                 "summary": "Update user",
                 "operationId": "App\\Http\\Controllers\\UserController::put",

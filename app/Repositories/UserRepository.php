@@ -11,7 +11,7 @@ class UserRepository implements UserRepositoryInterface
 {
     public function all()
     {
-        return User::all(['*']);
+        return User::all();
     }
 
     public function getUser($id)

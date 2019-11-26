@@ -185,11 +185,6 @@ return [
         */
         L5Swagger\L5SwaggerServiceProvider::class,
 
-        /**
-         * Add Repository Pattern
-         */
-        App\Providers\RepositoryServiceProvider::class,
-
     ],
 
     /*
