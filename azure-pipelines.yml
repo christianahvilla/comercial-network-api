@@ -5,6 +5,9 @@
 
 trigger:
 - master
+- development
+- feature/*
+- releases/*
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -24,3 +27,11 @@ steps:
 
 - script: composer install --no-interaction --prefer-dist
   displayName: 'composer install'
+
+- script: phpunit
+  displayName: 'Run tests with phpunit'
+
+- task: SonarQubePrepare@4
+  inputs:
+  scannerMode: 'CLI'
+  configMode: 'file'
