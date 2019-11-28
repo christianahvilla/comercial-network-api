@@ -32,6 +32,3 @@ steps:
   displayName: 'Run tests with phpunit'
 
 - task: SonarQubePrepare@4
-  inputs:
-  scannerMode: 'CLI'
-  configMode: 'file'
