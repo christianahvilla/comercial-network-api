@@ -185,6 +185,15 @@ return [
         */
         L5Swagger\L5SwaggerServiceProvider::class,
 
+        /**
+         * ServiceProvider
+         */
+        App\Providers\RepositoryServiceProvider::class,
+
+        /**
+         * Passport
+         */
+        Laravel\Passport\PassportServiceProvider::class,
     ],
 
     /*

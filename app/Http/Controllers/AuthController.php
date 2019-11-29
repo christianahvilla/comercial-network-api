@@ -2,33 +2,54 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Auth\Login;
 use App\Interfaces\AuthRepositoryInterface;
 use Illuminate\Http\Request;
 
+/**
+*   @OA\Info(
+*       description="",
+*       version="1.0.0",
+*       title="Apartame API",
+*   ),
+*   @OA\SecurityScheme(
+*       securityScheme="bearerAuth",
+*       in="header",
+*       name="bearerAuth",
+*       type="http",
+*       scheme="bearer",
+*       bearerFormat="JWT",
+*   )
+ */
 class AuthController extends Controller
 {
     private $authRepository;
 
-    public function _construct(AuthRepositoryInterface $authRepository)
+    public function __construct(AuthRepositoryInterface $authRepository)
     {
         $this->authRepository = $authRepository;
     }
 
     /**
     * @OA\Post(
-    *   path="/api/login",
-    *   summary="Login user",
-    *   @OA\Parameter(
-    *       name="email",
-    *       in="query",
-    *       description="Email",
-    *       required=true,
-    *   ),
-    *   @OA\Parameter(
-    *       name="Password",
-    *       in="query",
-    *       description="Password",
-    *       required=true,
+    *   path="/api/auth/login",
+    *   summary="Login user", 
+    *   tags={"Authentication"},
+    *   @OA\RequestBody(
+    *       @OA\MediaType(
+    *           mediaType="application/json",
+    *           @OA\Schema(
+    *               @OA\Property(
+    *                   property="email",
+    *                   type="string"
+    *               ),
+    *               @OA\Property(
+    *                   property="password",
+    *                   type="string"
+    *               ),
+    *               example={"email": "mcglynn.emory@example.net", "password": "password"}
+    *             )
+    *         )
     *   ),
     *   @OA\Response(
     *       response=200,
@@ -51,9 +72,11 @@ class AuthController extends Controller
     }
 
     /**
-    * @OA\Post(
-    *   path="/api/logout",
+    * @OA\Get(
+    *   path="/api/auth/logout",
     *   summary="Logout user",
+    *   tags={"Authentication"},
+    *   security={{"bearerAuth":{}}}, 
     *   @OA\Response(
     *       response=200,
     *       description="Logout user"
