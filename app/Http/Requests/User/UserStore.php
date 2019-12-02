@@ -24,12 +24,13 @@ class UserStore extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|unique|string|max:36',
+            'id' => 'required|string|max:36',
             'name' => 'required|string',
             'last_name' => 'required|string',
-            'email' => 'required|unique|email|string',
-            'phone' => 'required|unique|string|max:12',
-            'password' => 'required|unique|string|min:8',
+            'email' => 'required|email|string',
+            'phone' => 'required|string|max:12',
+            'role' => 'required|string',
+            'password' => 'required|string|min:8',
         ];
     }
 }

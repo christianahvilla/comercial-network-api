@@ -6,17 +6,11 @@ use App\Http\Requests\User\UserStore;
 use App\Http\Requests\User\UserUpdate;
 use App\Interfaces\UserRepositoryInterface;
 
-/**
-* @OA\Info(title="API Usuarios", version="1.0")
-*
-* @OA\Server(url="http://swagger.local")
-*/
-
 class UserController extends Controller
 {
     private $userRepository;
 
-    public function _construct(UserRepositoryInterface $userRepository)
+    public function __construct(UserRepositoryInterface $userRepository)
     {
         $this->userRepository = $userRepository;
     }
@@ -25,6 +19,8 @@ class UserController extends Controller
     * @OA\Get(
     *     path="/api/users",
     *     summary="Display users",
+    *     tags={"Users"},
+    *     security={{"bearerAuth":{}}}, 
     *     @OA\Response(
     *         response=200,
     *         description="Display all users"
@@ -45,6 +41,13 @@ class UserController extends Controller
     * @OA\Get(
     *     path="/api/users/{id}",
     *     summary="Display user",
+    *     tags={"Users"},
+    *     security={{"bearerAuth":{}}}, 
+    *     @OA\Parameter(
+    *       name="id",
+    *       in="path",
+    *       required=true,
+    *     ),
     *     @OA\Response(
     *         response=200,
     *         description="Display specific user"
@@ -65,17 +68,52 @@ class UserController extends Controller
     * @OA\Post(
     *   path="/api/users",
     *   summary="Create user",
-    *   @OA\Parameter(
-    *       name="firstname",
-    *       in="query",
-    *       description="Your first name",
-    *       required=true,
-    *   ),
-    *   @OA\Parameter(
-    *       name="lastname",
-    *       in="query",
-    *       description="Your last name",
-    *       required=true,
+    *   tags={"Users"},
+    *   security={{"bearerAuth":{}}}, 
+    *   @OA\RequestBody(
+    *     @OA\MediaType(
+    *         mediaType="application/json",
+    *         @OA\Schema(
+    *             @OA\Property(
+    *                 property="id",
+    *                 type="string"
+    *             ),
+    *             @OA\Property(
+    *                 property="name",
+    *                 type="string"
+    *             ),
+    *             @OA\Property(
+    *                 property="last_name",
+    *                 type="string"
+    *             ),
+    *             @OA\Property(
+    *                 property="email",
+    *                 type="string"
+    *             ),
+    *             @OA\Property(
+    *                 property="phone",
+    *                 type="string"
+    *             ),
+    *             @OA\Property(
+    *                 property="role",
+    *                 type="string"
+    *             ),
+    *             @OA\Property(
+    *                 property="password",
+    *                 type="string"
+    *             ),
+    *             example=
+    *             {
+    *                 "id": "4ed6914e-eff9-3b61-b0b0-6498f77a35f6",
+    *                 "name": "Javier",
+    *                 "last_name": "Gutierrez Mancillas",
+    *                 "email": "jgutierrez@net.com",
+    *                 "phone": "5555555555",
+    *                 "role": "Admin", 
+    *                 "password": "password",
+    *             }
+    *           )
+    *       )
     *   ),
     *   @OA\Response(
     *       response=200,
@@ -90,13 +128,65 @@ class UserController extends Controller
 
     public function store(UserStore $user)
     {
-        return $this->userRepository->strore($user);
+        return $this->userRepository->store($user);
     }
 
     /**
     * @OA\Put(
     *     path="/api/users/{id}",
     *     summary="Update user",
+    *     tags={"Users"},
+    *     security={{"bearerAuth":{}}}, 
+    *     @OA\Parameter(
+    *       name="id",
+    *       in="path",
+    *       required=true,
+    *     ),
+    *     @OA\RequestBody(
+    *       @OA\MediaType(
+    *           mediaType="application/json",
+    *           @OA\Schema(
+    *               @OA\Property(
+    *                   property="id",
+    *                   type="string"
+    *               ),
+    *               @OA\Property(
+    *                   property="name",
+    *                   type="string"
+    *               ),
+    *               @OA\Property(
+    *                   property="last_name",
+    *                   type="string"
+    *               ),
+    *               @OA\Property(
+    *                   property="email",
+    *                   type="string"
+    *               ),
+    *               @OA\Property(
+    *                   property="phone",
+    *                   type="string"
+    *               ),
+    *               @OA\Property(
+    *                   property="role",
+    *                   type="string"
+    *               ),
+    *               @OA\Property(
+    *                   property="password",
+    *                   type="string"
+    *               ),
+    *               example=
+    *               {
+    *                   "id": "4ed6914e-eff9-3b61-b0b0-6498f77a35f6",
+    *                   "name": "Javier",
+    *                   "last_name": "Gutierrez Mancillas",
+    *                   "email": "jgutierrez@net.com",
+    *                   "phone": "5555555555",
+    *                   "role": "Admin", 
+    *                   "password": "password",
+    *               }
+    *             )
+    *         )
+    *     ),
     *     @OA\Response(
     *         response=201,
     *         description="Update user"
@@ -117,6 +207,13 @@ class UserController extends Controller
     * @OA\Delete(
     *     path="/api/users/{id}",
     *     summary="Delete user",
+    *     tags={"Users"},
+    *     security={{"bearerAuth":{}}},
+    *     @OA\Parameter(
+    *       name="id",
+    *       in="path",
+    *       required=true,
+    *     ), 
     *     @OA\Response(
     *         response=204,
     *         description="Delete user"
