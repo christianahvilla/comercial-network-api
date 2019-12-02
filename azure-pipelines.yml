@@ -28,7 +28,13 @@ steps:
 - script: composer install --no-interaction --prefer-dist
   displayName: 'composer install'
 
-- script: phpunit
-  displayName: 'Run tests with phpunit'
+#- script: phpunit
+#  displayName: 'Run tests with phpunit'
 
 - task: SonarQubePrepare@4
+  inputs:
+    SonarQube: 'SonarQube'
+    scannerMode: 'CLI'
+    configMode: 'file'
+
+- task: SonarQubeAnalyze@4
