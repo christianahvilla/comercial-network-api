@@ -1,0 +1,194 @@
+openapi: 3.0.0
+info:
+  title: 'Apartame API'
+  description: ''
+  version: 1.0.0
+paths:
+  /api/auth/login:
+    post:
+      tags:
+        - Authentication
+      summary: 'Login user'
+      operationId: 'App\Http\Controllers\AuthController::login'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              type: object
+              example:
+                email: mcglynn.emory@example.net
+                password: password
+      responses:
+        '200':
+          description: 'Login user'
+        '500':
+          description: 'Something when wrong'
+        '401':
+          description: Unauthorized
+  /api/auth/logout:
+    get:
+      tags:
+        - Authentication
+      summary: 'Logout user'
+      operationId: 'App\Http\Controllers\AuthController::logout'
+      responses:
+        '200':
+          description: 'Logout user'
+        '500':
+          description: 'Something when wrong'
+        '401':
+          description: Unauthorized
+      security:
+        -
+          bearerAuth: []
+  /api/users:
+    get:
+      tags:
+        - Users
+      summary: 'Display users'
+      operationId: 'App\Http\Controllers\UserController::all'
+      responses:
+        '200':
+          description: 'Display all users'
+        '500':
+          description: 'Something when wrong'
+      security:
+        -
+          bearerAuth: []
+    post:
+      tags:
+        - Users
+      summary: 'Create user'
+      operationId: 'App\Http\Controllers\UserController::store'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+                last_name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+                role:
+                  type: string
+                password:
+                  type: string
+              type: object
+              example:
+                id: 4ed6914e-eff9-3b61-b0b0-6498f77a35f6
+                name: Javier
+                last_name: 'Gutierrez Mancillas'
+                email: jgutierrez@net.com
+                phone: '5555555555'
+                role: Admin
+                password: password
+      responses:
+        '200':
+          description: 'Create user'
+        '500':
+          description: 'Something when wrong'
+      security:
+        -
+          bearerAuth: []
+  '/api/users/{id}':
+    get:
+      tags:
+        - Users
+      summary: 'Display user'
+      operationId: 'App\Http\Controllers\UserController::getUser'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+      responses:
+        '200':
+          description: 'Display specific user'
+        '500':
+          description: 'Something when wrong'
+      security:
+        -
+          bearerAuth: []
+    put:
+      tags:
+        - Users
+      summary: 'Update user'
+      operationId: 'App\Http\Controllers\UserController::put'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+                last_name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+                role:
+                  type: string
+                password:
+                  type: string
+              type: object
+              example:
+                id: 4ed6914e-eff9-3b61-b0b0-6498f77a35f6
+                name: Javier
+                last_name: 'Gutierrez Mancillas'
+                email: jgutierrez@net.com
+                phone: '5555555555'
+                role: Admin
+                password: password
+      responses:
+        '201':
+          description: 'Update user'
+        '500':
+          description: 'Something when wrong'
+      security:
+        -
+          bearerAuth: []
+    delete:
+      tags:
+        - Users
+      summary: 'Delete user'
+      operationId: 'App\Http\Controllers\UserController::delete'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+      responses:
+        '204':
+          description: 'Delete user'
+        '500':
+          description: 'Something when wrong'
+      security:
+        -
+          bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      name: bearerAuth
+      in: header
+      bearerFormat: JWT
+      scheme: bearer
