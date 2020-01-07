@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Category\CategoryStore;
 use App\Http\Requests\Category\CategoryUpdate;
-use Illuminate\Http\Request;
 use App\Interfaces\CategoryRepositoryInterface;
 
 class CategoryController extends Controller
