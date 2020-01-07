@@ -31,3 +31,11 @@ Route::group(['middleware' => 'auth:api'], function() {
 });
 
 Route::get('/', 'UserController@all');
+
+Route::group(['middleware' => 'auth:api'], function(){
+   Route::group(['middleware' => 'admin'], function (){
+
+   });
+});
+
+Route::resource('products','ProductController');
