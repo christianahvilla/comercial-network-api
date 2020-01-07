@@ -32,10 +32,33 @@ Route::group(['middleware' => 'auth:api'], function() {
 
 Route::get('/', 'UserController@all');
 
+
+//// Products permissions
 Route::group(['middleware' => 'auth:api'], function(){
    Route::group(['middleware' => 'admin'], function (){
-
+       Route::resource('products','ProductController');
    });
 });
 
-Route::resource('products','ProductController');
+Route::group(['middleware' => 'auth:api'], function(){
+    Route::group(['middleware' => 'merchant'], function (){
+        Route::resource('products','ProductController');
+    });
+});
+
+Route::group(['middleware' => 'auth:api'], function(){
+    Route::group(['middleware' => 'customer'], function (){
+        Route::resource('products','ProductController',['only' => [
+            'show',
+            'index'
+        ]]);
+    });
+});
+
+Route::group(['middleware' => 'auth:api'], function(){
+    Route::group(['middleware' => 'employee'], function (){
+        Route::resource('products','ProductController',['except' => [
+            'destroy'
+        ]]);
+    });
+});

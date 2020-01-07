@@ -31,10 +31,10 @@ steps:
 #- script: phpunit
 #  displayName: 'Run tests with phpunit'
 
-- task: SonarQubePrepare@4
-  inputs:
-    SonarQube: 'SonarQube'
-    scannerMode: 'CLI'
-    configMode: 'file'
+#- task: SonarQubePrepare@4
+#  inputs:
+#    SonarQube: 'SonarQube'
+#    scannerMode: 'CLI'
+#    configMode: 'file'
 
-- task: SonarQubeAnalyze@4
+#- task: SonarQubeAnalyze@4

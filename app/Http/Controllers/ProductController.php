@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Product\ProductStore;
 use App\Http\Requests\Product\ProductUpdate;
-use App\Models\Product;
-use Illuminate\Http\Request;
+
 use App\Interfaces\ProductRepositoryInterface;
 
 class ProductController extends Controller
@@ -14,9 +13,9 @@ class ProductController extends Controller
 
     public function __construct(ProductRepositoryInterface $productRepository)
     {
-        $this -> middleware(['auth:api','admin'],['only' => [
-            'index'
-        ]]);
+        //$this -> middleware(['auth:api','admin,merchant']);
+
+        //$this -> middleware(['auth:api', 'merchant']);
         $this->productRepository = $productRepository;
     }
     /**
