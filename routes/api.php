@@ -62,3 +62,33 @@ Route::group(['middleware' => 'auth:api'], function(){
         ]]);
     });
 });
+
+///// Categories permissions
+Route::group(['middleware' => 'auth:api'], function(){
+    Route::group(['middleware' => 'admin'], function (){
+        Route::resource('categories','CategoryController');
+    });
+});
+
+Route::group(['middleware' => 'auth:api'], function(){
+    Route::group(['middleware' => 'merchant'], function (){
+        Route::resource('categories','CategoryController');
+    });
+});
+
+Route::group(['middleware' => 'auth:api'], function(){
+    Route::group(['middleware' => 'customer'], function (){
+        Route::resource('categories','CategoryController',['only' => [
+            'show',
+            'index'
+        ]]);
+    });
+});
+
+Route::group(['middleware' => 'auth:api'], function(){
+    Route::group(['middleware' => 'employee'], function (){
+        Route::resource('categories','CategoryController',['except' => [
+            'destroy'
+        ]]);
+    });
+});

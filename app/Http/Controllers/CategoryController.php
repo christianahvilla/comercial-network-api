@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Product\ProductStore;
-use App\Http\Requests\Product\ProductUpdate;
+use App\Http\Requests\Category\CategoryStore;
+use App\Http\Requests\Category\CategoryUpdate;
+use Illuminate\Http\Request;
+use App\Interfaces\CategoryRepositoryInterface;
 
-use App\Interfaces\ProductRepositoryInterface;
-
-class ProductController extends Controller
+class CategoryController extends Controller
 {
-    private $productRepository;
+    private $categoryRepository;
 
-    public function __construct(ProductRepositoryInterface $productRepository)
+    public function __construct(CategoryRepositoryInterface $categoryRepository)
     {
-        $this->productRepository = $productRepository;
+        $this->categoryRepository = $categoryRepository;
     }
     /**
      * Display a listing of the resource.
@@ -22,7 +22,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return $this->productRepository->all();
+        return $this->categoryRepository->all();
     }
 
     /**
@@ -41,11 +41,10 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductStore $product)
+    public function store(CategoryStore $category)
     {
-        return $this->productRepository->store($product);
+        return $this->categoryRepository->store($category);
     }
-
 
     /**
      * Display the specified resource.
@@ -55,7 +54,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        return $this->productRepository->find($id);
+        return $this->categoryRepository->find($id);
     }
 
     /**
@@ -76,9 +75,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductUpdate $product, $id)
+    public function update(CategoryUpdate $category, $id)
     {
-       return $this->productRepository->put($product, $id);
+        return $this->categoryRepository->put($category,$id);
     }
 
     /**
@@ -89,6 +88,6 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        return $this->productRepository->delete($id);
+        return $this->categoryRepository->delete($id);
     }
 }
