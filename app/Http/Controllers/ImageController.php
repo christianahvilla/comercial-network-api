@@ -2,28 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Category\CategoryStore;
-use App\Http\Requests\Category\CategoryUpdate;
-use App\Interfaces\CategoryRepositoryInterface;
+use App\Http\Requests\Image\ImageStore;
+use App\Http\Requests\Image\ImageUpdate;
+use App\Interfaces\ImageRepositoryInterface;
 
-class CategoryController extends Controller
+class ImageController extends Controller
 {
-    private $categoryRepository;
 
-    public function __construct(CategoryRepositoryInterface $categoryRepository)
+    private $imageRepository;
+
+    public function __construct(ImageRepositoryInterface $imageRepository)
     {
-        $this->categoryRepository = $categoryRepository;
+        $this->imageRepository = $imageRepository;
     }
 
     /**
     * @OA\Get(
-    *     path="/api/manage/categories",
-    *     summary="Display categories",
+    *     path="/api/manage/images/{id}",
+    *     summary="Display images",
     *     tags={"Manage"},
     *     security={{"bearerAuth":{}}}, 
+    *     @OA\Parameter(
+    *       name="id",
+    *       in="path",
+    *       required=true,
+    *     ),
     *     @OA\Response(
     *         response=200,
-    *         description="Display all categories"
+    *         description="Display all images"
     *     ),
     *     @OA\Response(
     *         response="500",
@@ -31,16 +37,16 @@ class CategoryController extends Controller
     *     )
     * )
     */
-
-    public function index()
+    
+    public function index($id)
     {
-        return $this->categoryRepository->index();
+        return $this->imageRepository->index($id);
     }
 
     /**
     * @OA\Post(
-    *     path="/api/manage/categories",
-    *     summary="Store category",
+    *     path="/api/manage/images",
+    *     summary="Create image",
     *     tags={"Manage"},
     *     security={{"bearerAuth":{}}}, 
     *     @OA\RequestBody(
@@ -52,20 +58,25 @@ class CategoryController extends Controller
     *                   type="string"
     *               ),
     *               @OA\Property(
-    *                   property="category",
+    *                   property="shop_id",
+    *                   type="string"
+    *               ),
+    *               @OA\Property(
+    *                   property="url",
     *                   type="string"
     *               ),
     *               example=
     *               {
-    *                   "id": "4ed6914e-eff9-3b61-b0b0-6498f77a3500",
-    *                   "category": "category"
+    *                   "id": "4ed6914e-eff9-3b61-b0b0-6498f77a35f1",
+    *                   "shop_id": "4ed6914e-eff9-3b61-b0b0-6498f77a35f1",
+    *                   "url": "https://tecnologia-informatica.com/wp-content/uploads/2018/01/que-es-meme-como-hacer-memes-7.jpg"
     *               }
     *             )
     *         )
     *     ),
     *     @OA\Response(
     *         response=201,
-    *         description="Store category"
+    *         description="Create image"
     *     ),
     *     @OA\Response(
     *         response="500",
@@ -73,16 +84,16 @@ class CategoryController extends Controller
     *     )
     * )
     */ 
-
-    public function store(CategoryStore $category)
+    
+    public function store(ImageStore $image)
     {
-        return $this->categoryRepository->store($category);
+        return $this->imageRepository->index($image);
     }
 
     /**
     * @OA\Get(
-    *     path="/api/manage/categories/{id}",
-    *     summary="Display category",
+    *     path="/api/manage/images/specific/{id}",
+    *     summary="Display image",
     *     tags={"Manage"},
     *     security={{"bearerAuth":{}}},
     *     @OA\Parameter(
@@ -92,7 +103,7 @@ class CategoryController extends Controller
     *     ),
     *     @OA\Response(
     *         response=200,
-    *         description="Display an specific category"
+    *         description="Display an specific image"
     *     ),
     *     @OA\Response(
     *         response="500",
@@ -103,13 +114,13 @@ class CategoryController extends Controller
 
     public function show($id)
     {
-        return $this->categoryRepository->show($id);
+        return $this->imageRepository->show($id);
     }
 
     /**
     * @OA\Put(
-    *     path="/api/manage/categories/{id}",
-    *     summary="Update category",
+    *     path="/api/manage/images/{id}",
+    *     summary="Update image",
     *     tags={"Manage"},
     *     security={{"bearerAuth":{}}}, 
     *     @OA\Parameter(
@@ -126,20 +137,25 @@ class CategoryController extends Controller
     *                   type="string"
     *               ),
     *               @OA\Property(
-    *                   property="category",
+    *                   property="shop_id",
+    *                   type="string"
+    *               ),
+    *               @OA\Property(
+    *                   property="url",
     *                   type="string"
     *               ),
     *               example=
     *               {
-    *                   "id": "4ed6914e-eff9-3b61-b0b0-6498f77a3500",
-    *                   "category": "category"
+    *                   "id": "4ed6914e-eff9-3b61-b0b0-6498f77a35f1",
+    *                   "shop_id": "4ed6914e-eff9-3b61-b0b0-6498f77a35f1",
+    *                   "url": "https://tecnologia-informatica.com/wp-content/uploads/2018/01/que-es-meme-como-hacer-memes-7.jpg"
     *               }
     *             )
     *         )
     *     ),
     *     @OA\Response(
     *         response=201,
-    *         description="Update category"
+    *         description="Update image"
     *     ),
     *     @OA\Response(
     *         response="500",
@@ -148,15 +164,15 @@ class CategoryController extends Controller
     * )
     */ 
 
-    public function update(CategoryUpdate $category, $id)
+    public function update(ImageUpdate $image, $id)
     {
-        return $this->categoryRepository->update($category,$id);
+        return $this->imageRepository->update($image, $id);
     }
 
     /**
     * @OA\Delete(
-    *     path="/api/manage/categories/{id}",
-    *     summary="Delete category",
+    *     path="/api/manage/images/{id}",
+    *     summary="Delete image",
     *     tags={"Manage"},
     *     security={{"bearerAuth":{}}},
     *     @OA\Parameter(
@@ -166,7 +182,7 @@ class CategoryController extends Controller
     *     ), 
     *     @OA\Response(
     *         response=204,
-    *         description="Delete category"
+    *         description="Delete image"
     *     ),
     *     @OA\Response(
     *         response="500",
@@ -174,9 +190,9 @@ class CategoryController extends Controller
     *     )
     * )
     */
-
+    
     public function destroy($id)
     {
-        return $this->categoryRepository->destroy($id);
+        return $this->imageRepository->destroy($id);
     }
 }

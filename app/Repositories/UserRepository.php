@@ -9,12 +9,12 @@ use App\Interfaces\UserRepositoryInterface;
 
 class UserRepository implements UserRepositoryInterface
 {
-    public function all()
+    public function index()
     {
         return User::all();
     }
 
-    public function getUser($id)
+    public function show($id)
     {
         return User::findOrFail($id);
     }

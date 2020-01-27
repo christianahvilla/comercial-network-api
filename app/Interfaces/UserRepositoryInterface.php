@@ -9,9 +9,9 @@ use App\Http\Requests\User\UserUpdate;
 interface UserRepositoryInterface 
 {
 
-    public function all();
+    public function index();
 
-    public function getUser($id);
+    public function show($id);
 
     public function store(UserStore $user);
 

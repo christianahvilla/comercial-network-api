@@ -4,17 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Image extends Model
 {
+
     protected $keyType = 'string';
 
     public $incrementing = false;
 
     protected $fillable =[
-        'id', 'category'
+        'id', 'shop_id', 'url'
     ];
 
-    public function products(){
-        return $this->hasMany(Product::class);
+    public function user(){
+        return $this->belongsTo(Shop::class);
     }
 }

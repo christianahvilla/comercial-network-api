@@ -72,13 +72,877 @@
                 ]
             }
         },
-        "/api/users": {
+        "/api/manage/categories": {
             "get": {
                 "tags": [
-                    "Users"
+                    "Manage"
+                ],
+                "summary": "Display categories",
+                "operationId": "App\\Http\\Controllers\\CategoryController::index",
+                "responses": {
+                    "200": {
+                        "description": "Display all categories"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Manage"
+                ],
+                "summary": "Store category",
+                "operationId": "App\\Http\\Controllers\\CategoryController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "category": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "id": "4ed6914e-eff9-3b61-b0b0-6498f77a3500",
+                                    "category": "category"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Store category"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/manage/categories/{id}": {
+            "get": {
+                "tags": [
+                    "Manage"
+                ],
+                "summary": "Display category",
+                "operationId": "App\\Http\\Controllers\\CategoryController::show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Display an specific category"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Manage"
+                ],
+                "summary": "Update category",
+                "operationId": "App\\Http\\Controllers\\CategoryController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "category": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "id": "4ed6914e-eff9-3b61-b0b0-6498f77a3500",
+                                    "category": "category"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Update category"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Manage"
+                ],
+                "summary": "Delete category",
+                "operationId": "App\\Http\\Controllers\\CategoryController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Delete category"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/manage/images/{id}": {
+            "get": {
+                "tags": [
+                    "Manage"
+                ],
+                "summary": "Display images",
+                "operationId": "App\\Http\\Controllers\\ImageController::index",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Display all images"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Manage"
+                ],
+                "summary": "Update image",
+                "operationId": "App\\Http\\Controllers\\ImageController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "shop_id": {
+                                        "type": "string"
+                                    },
+                                    "url": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "id": "4ed6914e-eff9-3b61-b0b0-6498f77a35f1",
+                                    "shop_id": "4ed6914e-eff9-3b61-b0b0-6498f77a35f1",
+                                    "url": "https://tecnologia-informatica.com/wp-content/uploads/2018/01/que-es-meme-como-hacer-memes-7.jpg"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Update image"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Manage"
+                ],
+                "summary": "Delete image",
+                "operationId": "App\\Http\\Controllers\\ImageController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Delete image"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/manage/images": {
+            "post": {
+                "tags": [
+                    "Manage"
+                ],
+                "summary": "Create image",
+                "operationId": "App\\Http\\Controllers\\ImageController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "shop_id": {
+                                        "type": "string"
+                                    },
+                                    "url": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "id": "4ed6914e-eff9-3b61-b0b0-6498f77a35f1",
+                                    "shop_id": "4ed6914e-eff9-3b61-b0b0-6498f77a35f1",
+                                    "url": "https://tecnologia-informatica.com/wp-content/uploads/2018/01/que-es-meme-como-hacer-memes-7.jpg"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Create image"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/manage/images/specific/{id}": {
+            "get": {
+                "tags": [
+                    "Manage"
+                ],
+                "summary": "Display image",
+                "operationId": "App\\Http\\Controllers\\ImageController::show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Display an specific image"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/manage/products": {
+            "get": {
+                "tags": [
+                    "Manage"
+                ],
+                "summary": "Display products",
+                "operationId": "App\\Http\\Controllers\\ProductController::index",
+                "responses": {
+                    "200": {
+                        "description": "Display all products"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Manage"
+                ],
+                "summary": "Create product",
+                "operationId": "App\\Http\\Controllers\\ProductController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "category_id": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "price": {
+                                        "type": "decimal"
+                                    },
+                                    "image": {
+                                        "type": "string"
+                                    },
+                                    "stock": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "id": "4ed6914e-eff9-3b61-b0b0-6498f77a35f8",
+                                    "shop_id": "4ed6914e-eff9-3b61-b0b0-6498f77a35f0",
+                                    "category_id": "4ed69141-eff9-3b61-b0b0-6498f77a35f0",
+                                    "name": "Chetos",
+                                    "image": "http://marioruizmadrigal.com/blog/wp-content/uploads/2019/08/chetos-flamin-hot.jpg",
+                                    "price": "8",
+                                    "stock": "50"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Create product"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/manage/products/{id}": {
+            "get": {
+                "tags": [
+                    "Manage"
+                ],
+                "summary": "Display product",
+                "operationId": "App\\Http\\Controllers\\ProductController::show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Display an specific product"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Manage"
+                ],
+                "summary": "Update product",
+                "operationId": "App\\Http\\Controllers\\ProductController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "category_id": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "price": {
+                                        "type": "decimal"
+                                    },
+                                    "image": {
+                                        "type": "string"
+                                    },
+                                    "stock": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "shop_id": "4ed6914e-eff9-3b61-b0b0-6498f77a35f0",
+                                    "category_id": "4ed69141-eff9-3b61-b0b0-6498f77a35f0",
+                                    "name": "Chetos",
+                                    "image": "http://marioruizmadrigal.com/blog/wp-content/uploads/2019/08/chetos-flamin-hot.jpg",
+                                    "price": "8",
+                                    "stock": "50"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Update product"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Manage"
+                ],
+                "summary": "Delete product",
+                "operationId": "App\\Http\\Controllers\\ProductController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Delete product"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/manage/shops": {
+            "get": {
+                "tags": [
+                    "Manage"
+                ],
+                "summary": "Display shops",
+                "operationId": "App\\Http\\Controllers\\ShopController::index",
+                "responses": {
+                    "200": {
+                        "description": "Display all shops"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Manage"
+                ],
+                "summary": "Sotre shop",
+                "operationId": "App\\Http\\Controllers\\ShopController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "user_id": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "image": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "type": "string"
+                                    },
+                                    "web_page": {
+                                        "type": "string"
+                                    },
+                                    "kind": {
+                                        "type": "string"
+                                    },
+                                    "enabled": {
+                                        "type": "integer"
+                                    },
+                                    "street": {
+                                        "type": "string"
+                                    },
+                                    "neighborhodd": {
+                                        "type": "string"
+                                    },
+                                    "city": {
+                                        "type": "string"
+                                    },
+                                    "long": {
+                                        "type": "float"
+                                    },
+                                    "lat": {
+                                        "type": "float"
+                                    },
+                                    "products_limit": {
+                                        "type": "integer"
+                                    },
+                                    "image_limit": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "id": "4ed6914e-eff9-3b61-b0b0-6498f77a35f0",
+                                    "user_id": "4ed6914e-eff9-3b61-b0b0-6498f77a35f6",
+                                    "name": "Javier",
+                                    "image": "https://tecnologia-informatica.com/wp-content/uploads/2018/01/que-es-meme-como-hacer-memes-7.jpg",
+                                    "email": "jgutierrez@net.com",
+                                    "phone": "5555555555",
+                                    "web_page": "https://www.intersysconsulting.com/",
+                                    "kind": "Ferreteria",
+                                    "ebaled": "1",
+                                    "street": "Diego Hernandez Topete",
+                                    "neighborhood": "Primo Tapia",
+                                    "city": "Morelia",
+                                    "long": "-101.186 19",
+                                    "lat": "19.7006",
+                                    "products_limit": "19",
+                                    "images_limit": "200"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Store shop"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/manage/shops/{id}": {
+            "get": {
+                "tags": [
+                    "Manage"
+                ],
+                "summary": "Display shop",
+                "operationId": "App\\Http\\Controllers\\ShopController::show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Display an specific shop"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Manage"
+                ],
+                "summary": "Update shop",
+                "operationId": "App\\Http\\Controllers\\ShopController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "user_id": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "image": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "type": "string"
+                                    },
+                                    "web_page": {
+                                        "type": "string"
+                                    },
+                                    "kind": {
+                                        "type": "string"
+                                    },
+                                    "enabled": {
+                                        "type": "integer"
+                                    },
+                                    "street": {
+                                        "type": "string"
+                                    },
+                                    "neighborhodd": {
+                                        "type": "string"
+                                    },
+                                    "city": {
+                                        "type": "string"
+                                    },
+                                    "long": {
+                                        "type": "float"
+                                    },
+                                    "lat": {
+                                        "type": "float"
+                                    },
+                                    "products_limit": {
+                                        "type": "integer"
+                                    },
+                                    "image_limit": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "id": "4ed6914e-eff9-3b61-b0b0-6498f77a35f0",
+                                    "user_id": "4ed6914e-eff9-3b61-b0b0-6498f77a35f6",
+                                    "name": "Javier",
+                                    "image": "https://tecnologia-informatica.com/wp-content/uploads/2018/01/que-es-meme-como-hacer-memes-7.jpg",
+                                    "email": "jgutierrez@net.com",
+                                    "phone": "5555555555",
+                                    "web_page": "https://www.intersysconsulting.com/",
+                                    "kind": "Ferreteria",
+                                    "ebaled": "1",
+                                    "street": "Diego Hernandez Topete",
+                                    "neighborhood": "Primo Tapia",
+                                    "city": "Morelia",
+                                    "long": "-101.186 19",
+                                    "lat": "19.7006",
+                                    "products_limit": "19",
+                                    "images_limit": "200"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Update shop"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Manage"
+                ],
+                "summary": "Delete shop",
+                "operationId": "App\\Http\\Controllers\\ShopController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Delete shop"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/manage/shops/disable/{id}": {
+            "put": {
+                "tags": [
+                    "Manage"
+                ],
+                "summary": "Disable shop",
+                "operationId": "App\\Http\\Controllers\\ShopController::disable",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Disable an specific shop"
+                    },
+                    "500": {
+                        "description": "Something when wrong"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/manage/users": {
+            "get": {
+                "tags": [
+                    "Manage"
                 ],
                 "summary": "Display users",
-                "operationId": "App\\Http\\Controllers\\UserController::all",
+                "operationId": "App\\Http\\Controllers\\UserController::index",
                 "responses": {
                     "200": {
                         "description": "Display all users"
@@ -95,7 +959,7 @@
             },
             "post": {
                 "tags": [
-                    "Users"
+                    "Manage"
                 ],
                 "summary": "Create user",
                 "operationId": "App\\Http\\Controllers\\UserController::store",
@@ -155,13 +1019,13 @@
                 ]
             }
         },
-        "/api/users/{id}": {
+        "/api/manage/users/{id}": {
             "get": {
                 "tags": [
-                    "Users"
+                    "Manage"
                 ],
                 "summary": "Display user",
-                "operationId": "App\\Http\\Controllers\\UserController::getUser",
+                "operationId": "App\\Http\\Controllers\\UserController::show",
                 "parameters": [
                     {
                         "name": "id",
@@ -185,7 +1049,7 @@
             },
             "put": {
                 "tags": [
-                    "Users"
+                    "Manage"
                 ],
                 "summary": "Update user",
                 "operationId": "App\\Http\\Controllers\\UserController::put",
@@ -253,7 +1117,7 @@
             },
             "delete": {
                 "tags": [
-                    "Users"
+                    "Manage"
                 ],
                 "summary": "Delete user",
                 "operationId": "App\\Http\\Controllers\\UserController::delete",
