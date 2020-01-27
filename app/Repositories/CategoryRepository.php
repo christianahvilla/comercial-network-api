@@ -11,7 +11,7 @@ class CategoryRepository implements CategoryRepositoryInterface
 {
     public function index()
     {
-        return Category::index();
+        return Category::all();
     }
 
     public function show($id)

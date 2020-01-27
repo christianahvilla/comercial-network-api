@@ -8,11 +8,17 @@ class Product extends Model
 {
     protected $keyType = 'string';
 
+    public $incrementing = false;
+
     protected $fillable = [
-        'id', 'category_id', 'name', 'price', 'photo', 'stock'
+        'id', 'shop_id','category_id', 'name', 'price', 'image', 'stock'
     ];
 
     public function category(){
         return $this->belongsTo(Category::class);
+    }
+
+    public function shop(){
+        return $this->belongsTo(Shop::class);
     }
 }

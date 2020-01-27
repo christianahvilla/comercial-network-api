@@ -17,9 +17,9 @@ class UserController extends Controller
 
     /**
     * @OA\Get(
-    *     path="/api/users",
+    *     path="/api/manage/users",
     *     summary="Display users",
-    *     tags={"Users"},
+    *     tags={"Manage"},
     *     security={{"bearerAuth":{}}}, 
     *     @OA\Response(
     *         response=200,
@@ -32,16 +32,16 @@ class UserController extends Controller
     * )
     */
 
-    public function all()
+    public function index()
     {
-        return $this->userRepository->all();
+        return $this->userRepository->index();
     }
 
     /**
     * @OA\Get(
-    *     path="/api/users/{id}",
+    *     path="/api/manage/users/{id}",
     *     summary="Display user",
-    *     tags={"Users"},
+    *     tags={"Manage"},
     *     security={{"bearerAuth":{}}}, 
     *     @OA\Parameter(
     *       name="id",
@@ -59,16 +59,16 @@ class UserController extends Controller
     * )
     */
 
-    public function getUser($id)
+    public function show($id)
     {
-        return $this->userRepository->getUser($id);
+        return $this->userRepository->show($id);
     }
 
     /**
     * @OA\Post(
-    *   path="/api/users",
+    *   path="/api/manage/users",
     *   summary="Create user",
-    *   tags={"Users"},
+    *   tags={"Manage"},
     *   security={{"bearerAuth":{}}}, 
     *   @OA\RequestBody(
     *     @OA\MediaType(
@@ -133,9 +133,9 @@ class UserController extends Controller
 
     /**
     * @OA\Put(
-    *     path="/api/users/{id}",
+    *     path="/api/manage/users/{id}",
     *     summary="Update user",
-    *     tags={"Users"},
+    *     tags={"Manage"},
     *     security={{"bearerAuth":{}}}, 
     *     @OA\Parameter(
     *       name="id",
@@ -205,9 +205,9 @@ class UserController extends Controller
 
     /**
     * @OA\Delete(
-    *     path="/api/users/{id}",
+    *     path="/api/manage/users/{id}",
     *     summary="Delete user",
-    *     tags={"Users"},
+    *     tags={"Manage"},
     *     security={{"bearerAuth":{}}},
     *     @OA\Parameter(
     *       name="id",

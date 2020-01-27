@@ -8,34 +8,26 @@ use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
+
+    protected $keyType = 'string';
+
     use HasApiTokens, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'id', 'name', 'last_name', 'email', 'phone', 'role', 'password'
     ];
 
     public $incrementing = false;
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password'
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function shops(){
+        return $this->hasMany(Shop::class);
+    }
 }
