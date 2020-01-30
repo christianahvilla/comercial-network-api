@@ -75,7 +75,7 @@
         "/api/manage/categories": {
             "get": {
                 "tags": [
-                    "Manage"
+                    "Categories"
                 ],
                 "summary": "Display categories",
                 "operationId": "App\\Http\\Controllers\\CategoryController::index",
@@ -95,7 +95,7 @@
             },
             "post": {
                 "tags": [
-                    "Manage"
+                    "Categories"
                 ],
                 "summary": "Store category",
                 "operationId": "App\\Http\\Controllers\\CategoryController::store",
@@ -138,7 +138,7 @@
         "/api/manage/categories/{id}": {
             "get": {
                 "tags": [
-                    "Manage"
+                    "Categories"
                 ],
                 "summary": "Display category",
                 "operationId": "App\\Http\\Controllers\\CategoryController::show",
@@ -165,7 +165,7 @@
             },
             "put": {
                 "tags": [
-                    "Manage"
+                    "Categories"
                 ],
                 "summary": "Update category",
                 "operationId": "App\\Http\\Controllers\\CategoryController::update",
@@ -213,7 +213,7 @@
             },
             "delete": {
                 "tags": [
-                    "Manage"
+                    "Categories"
                 ],
                 "summary": "Delete category",
                 "operationId": "App\\Http\\Controllers\\CategoryController::destroy",
@@ -242,7 +242,7 @@
         "/api/manage/images/{id}": {
             "get": {
                 "tags": [
-                    "Manage"
+                    "Images"
                 ],
                 "summary": "Display images",
                 "operationId": "App\\Http\\Controllers\\ImageController::index",
@@ -269,7 +269,7 @@
             },
             "put": {
                 "tags": [
-                    "Manage"
+                    "Images"
                 ],
                 "summary": "Update image",
                 "operationId": "App\\Http\\Controllers\\ImageController::update",
@@ -321,7 +321,7 @@
             },
             "delete": {
                 "tags": [
-                    "Manage"
+                    "Images"
                 ],
                 "summary": "Delete image",
                 "operationId": "App\\Http\\Controllers\\ImageController::destroy",
@@ -350,7 +350,7 @@
         "/api/manage/images": {
             "post": {
                 "tags": [
-                    "Manage"
+                    "Images"
                 ],
                 "summary": "Create image",
                 "operationId": "App\\Http\\Controllers\\ImageController::store",
@@ -397,7 +397,7 @@
         "/api/manage/images/specific/{id}": {
             "get": {
                 "tags": [
-                    "Manage"
+                    "Images"
                 ],
                 "summary": "Display image",
                 "operationId": "App\\Http\\Controllers\\ImageController::show",
@@ -426,7 +426,7 @@
         "/api/manage/products": {
             "get": {
                 "tags": [
-                    "Manage"
+                    "Products"
                 ],
                 "summary": "Display products",
                 "operationId": "App\\Http\\Controllers\\ProductController::index",
@@ -446,7 +446,7 @@
             },
             "post": {
                 "tags": [
-                    "Manage"
+                    "Products"
                 ],
                 "summary": "Create product",
                 "operationId": "App\\Http\\Controllers\\ProductController::store",
@@ -506,7 +506,7 @@
         "/api/manage/products/{id}": {
             "get": {
                 "tags": [
-                    "Manage"
+                    "Products"
                 ],
                 "summary": "Display product",
                 "operationId": "App\\Http\\Controllers\\ProductController::show",
@@ -533,7 +533,7 @@
             },
             "put": {
                 "tags": [
-                    "Manage"
+                    "Products"
                 ],
                 "summary": "Update product",
                 "operationId": "App\\Http\\Controllers\\ProductController::update",
@@ -597,7 +597,7 @@
             },
             "delete": {
                 "tags": [
-                    "Manage"
+                    "Products"
                 ],
                 "summary": "Delete product",
                 "operationId": "App\\Http\\Controllers\\ProductController::destroy",
@@ -626,7 +626,7 @@
         "/api/manage/shops": {
             "get": {
                 "tags": [
-                    "Manage"
+                    "Shops"
                 ],
                 "summary": "Display shops",
                 "operationId": "App\\Http\\Controllers\\ShopController::index",
@@ -646,7 +646,7 @@
             },
             "post": {
                 "tags": [
-                    "Manage"
+                    "Shops"
                 ],
                 "summary": "Sotre shop",
                 "operationId": "App\\Http\\Controllers\\ShopController::store",
@@ -745,7 +745,7 @@
         "/api/manage/shops/{id}": {
             "get": {
                 "tags": [
-                    "Manage"
+                    "Shops"
                 ],
                 "summary": "Display shop",
                 "operationId": "App\\Http\\Controllers\\ShopController::show",
@@ -777,7 +777,7 @@
             },
             "put": {
                 "tags": [
-                    "Manage"
+                    "Shops"
                 ],
                 "summary": "Update shop",
                 "operationId": "App\\Http\\Controllers\\ShopController::update",
@@ -881,7 +881,7 @@
             },
             "delete": {
                 "tags": [
-                    "Manage"
+                    "Shops"
                 ],
                 "summary": "Delete shop",
                 "operationId": "App\\Http\\Controllers\\ShopController::destroy",
@@ -910,7 +910,7 @@
         "/api/manage/shops/disable/{id}": {
             "put": {
                 "tags": [
-                    "Manage"
+                    "Shops"
                 ],
                 "summary": "Disable shop",
                 "operationId": "App\\Http\\Controllers\\ShopController::disable",
@@ -939,7 +939,7 @@
         "/api/manage/users": {
             "get": {
                 "tags": [
-                    "Manage"
+                    "Users"
                 ],
                 "summary": "Display users",
                 "operationId": "App\\Http\\Controllers\\UserController::index",
@@ -959,7 +959,7 @@
             },
             "post": {
                 "tags": [
-                    "Manage"
+                    "Users"
                 ],
                 "summary": "Create user",
                 "operationId": "App\\Http\\Controllers\\UserController::store",
@@ -1022,7 +1022,7 @@
         "/api/manage/users/{id}": {
             "get": {
                 "tags": [
-                    "Manage"
+                    "Users"
                 ],
                 "summary": "Display user",
                 "operationId": "App\\Http\\Controllers\\UserController::show",
@@ -1049,7 +1049,7 @@
             },
             "put": {
                 "tags": [
-                    "Manage"
+                    "Users"
                 ],
                 "summary": "Update user",
                 "operationId": "App\\Http\\Controllers\\UserController::put",
@@ -1117,7 +1117,7 @@
             },
             "delete": {
                 "tags": [
-                    "Manage"
+                    "Users"
                 ],
                 "summary": "Delete user",
                 "operationId": "App\\Http\\Controllers\\UserController::delete",

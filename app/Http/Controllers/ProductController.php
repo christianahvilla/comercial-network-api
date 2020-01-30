@@ -20,7 +20,7 @@ class ProductController extends Controller
     * @OA\Get(
     *     path="/api/manage/products",
     *     summary="Display products",
-    *     tags={"Manage"},
+    *     tags={"Products"},
     *     security={{"bearerAuth":{}}}, 
     *     @OA\Response(
     *         response=200,
@@ -42,7 +42,7 @@ class ProductController extends Controller
     * @OA\Post(
     *   path="/api/manage/products",
     *   summary="Create product",
-    *   tags={"Manage"},
+    *   tags={"Products"},
     *   security={{"bearerAuth":{}}}, 
     *   @OA\RequestBody(
     *     @OA\MediaType(
@@ -105,7 +105,7 @@ class ProductController extends Controller
     * @OA\Get(
     *     path="/api/manage/products/{id}",
     *     summary="Display product",
-    *     tags={"Manage"},
+    *     tags={"Products"},
     *     security={{"bearerAuth":{}}},
     *     @OA\Parameter(
     *       name="id",
@@ -132,7 +132,7 @@ class ProductController extends Controller
     * @OA\Put(
     *   path="/api/manage/products/{id}",
     *   summary="Update product",
-    *   tags={"Manage"},
+    *   tags={"Products"},
     *   security={{"bearerAuth":{}}}, 
     *     @OA\Parameter(
     *       name="id",
@@ -199,7 +199,7 @@ class ProductController extends Controller
     * @OA\Delete(
     *     path="/api/manage/products/{id}",
     *     summary="Delete product",
-    *     tags={"Manage"},
+    *     tags={"Products"},
     *     security={{"bearerAuth":{}}},
     *     @OA\Parameter(
     *       name="id",

@@ -19,7 +19,7 @@ class CategoryController extends Controller
     * @OA\Get(
     *     path="/api/manage/categories",
     *     summary="Display categories",
-    *     tags={"Manage"},
+    *     tags={"Categories"},
     *     security={{"bearerAuth":{}}}, 
     *     @OA\Response(
     *         response=200,
@@ -41,7 +41,7 @@ class CategoryController extends Controller
     * @OA\Post(
     *     path="/api/manage/categories",
     *     summary="Store category",
-    *     tags={"Manage"},
+    *     tags={"Categories"},
     *     security={{"bearerAuth":{}}}, 
     *     @OA\RequestBody(
     *       @OA\MediaType(
@@ -83,7 +83,7 @@ class CategoryController extends Controller
     * @OA\Get(
     *     path="/api/manage/categories/{id}",
     *     summary="Display category",
-    *     tags={"Manage"},
+    *     tags={"Categories"},
     *     security={{"bearerAuth":{}}},
     *     @OA\Parameter(
     *       name="id",
@@ -110,7 +110,7 @@ class CategoryController extends Controller
     * @OA\Put(
     *     path="/api/manage/categories/{id}",
     *     summary="Update category",
-    *     tags={"Manage"},
+    *     tags={"Categories"},
     *     security={{"bearerAuth":{}}}, 
     *     @OA\Parameter(
     *       name="id",
@@ -157,7 +157,7 @@ class CategoryController extends Controller
     * @OA\Delete(
     *     path="/api/manage/categories/{id}",
     *     summary="Delete category",
-    *     tags={"Manage"},
+    *     tags={"Categories"},
     *     security={{"bearerAuth":{}}},
     *     @OA\Parameter(
     *       name="id",

@@ -20,7 +20,7 @@ class ImageController extends Controller
     * @OA\Get(
     *     path="/api/manage/images/{id}",
     *     summary="Display images",
-    *     tags={"Manage"},
+    *     tags={"Images"},
     *     security={{"bearerAuth":{}}}, 
     *     @OA\Parameter(
     *       name="id",
@@ -47,7 +47,7 @@ class ImageController extends Controller
     * @OA\Post(
     *     path="/api/manage/images",
     *     summary="Create image",
-    *     tags={"Manage"},
+    *     tags={"Images"},
     *     security={{"bearerAuth":{}}}, 
     *     @OA\RequestBody(
     *       @OA\MediaType(
@@ -94,7 +94,7 @@ class ImageController extends Controller
     * @OA\Get(
     *     path="/api/manage/images/specific/{id}",
     *     summary="Display image",
-    *     tags={"Manage"},
+    *     tags={"Images"},
     *     security={{"bearerAuth":{}}},
     *     @OA\Parameter(
     *       name="id",
@@ -121,7 +121,7 @@ class ImageController extends Controller
     * @OA\Put(
     *     path="/api/manage/images/{id}",
     *     summary="Update image",
-    *     tags={"Manage"},
+    *     tags={"Images"},
     *     security={{"bearerAuth":{}}}, 
     *     @OA\Parameter(
     *       name="id",
@@ -173,7 +173,7 @@ class ImageController extends Controller
     * @OA\Delete(
     *     path="/api/manage/images/{id}",
     *     summary="Delete image",
-    *     tags={"Manage"},
+    *     tags={"Images"},
     *     security={{"bearerAuth":{}}},
     *     @OA\Parameter(
     *       name="id",

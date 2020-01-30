@@ -19,7 +19,7 @@ class UserController extends Controller
     * @OA\Get(
     *     path="/api/manage/users",
     *     summary="Display users",
-    *     tags={"Manage"},
+    *     tags={"Users"},
     *     security={{"bearerAuth":{}}}, 
     *     @OA\Response(
     *         response=200,
@@ -41,7 +41,7 @@ class UserController extends Controller
     * @OA\Get(
     *     path="/api/manage/users/{id}",
     *     summary="Display user",
-    *     tags={"Manage"},
+    *     tags={"Users"},
     *     security={{"bearerAuth":{}}}, 
     *     @OA\Parameter(
     *       name="id",
@@ -68,7 +68,7 @@ class UserController extends Controller
     * @OA\Post(
     *   path="/api/manage/users",
     *   summary="Create user",
-    *   tags={"Manage"},
+    *   tags={"Users"},
     *   security={{"bearerAuth":{}}}, 
     *   @OA\RequestBody(
     *     @OA\MediaType(
@@ -135,7 +135,7 @@ class UserController extends Controller
     * @OA\Put(
     *     path="/api/manage/users/{id}",
     *     summary="Update user",
-    *     tags={"Manage"},
+    *     tags={"Users"},
     *     security={{"bearerAuth":{}}}, 
     *     @OA\Parameter(
     *       name="id",
@@ -207,7 +207,7 @@ class UserController extends Controller
     * @OA\Delete(
     *     path="/api/manage/users/{id}",
     *     summary="Delete user",
-    *     tags={"Manage"},
+    *     tags={"Users"},
     *     security={{"bearerAuth":{}}},
     *     @OA\Parameter(
     *       name="id",

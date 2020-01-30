@@ -20,7 +20,7 @@ class ShopController extends Controller
     * @OA\Get(
     *     path="/api/manage/shops",
     *     summary="Display shops",
-    *     tags={"Manage"},
+    *     tags={"Shops"},
     *     security={{"bearerAuth":{}}}, 
     *     @OA\Response(
     *         response=200,
@@ -42,7 +42,7 @@ class ShopController extends Controller
     * @OA\Get(
     *     path="/api/manage/shops/{id}",
     *     summary="Display shop",
-    *     tags={"Manage"},
+    *     tags={"Shops"},
     *     security={{"bearerAuth":{}}},
     *     @OA\Parameter(
     *       name="id",
@@ -74,7 +74,7 @@ class ShopController extends Controller
     * @OA\Post(
     *   path="/api/manage/shops",
     *   summary="Sotre shop",
-    *   tags={"Manage"},
+    *   tags={"Shops"},
     *   security={{"bearerAuth":{}}}, 
     *   @OA\RequestBody(
     *     @OA\MediaType(
@@ -186,7 +186,7 @@ class ShopController extends Controller
     * @OA\Put(
     *   path="/api/manage/shops/{id}",
     *   summary="Update shop",
-    *   tags={"Manage"},
+    *   tags={"Shops"},
     *   security={{"bearerAuth":{}}},
     *     @OA\Parameter(
     *       name="id",
@@ -303,7 +303,7 @@ class ShopController extends Controller
     * @OA\Put(
     *     path="/api/manage/shops/disable/{id}",
     *     summary="Disable shop",
-    *     tags={"Manage"},
+    *     tags={"Shops"},
     *     security={{"bearerAuth":{}}}, 
     *     @OA\Parameter(
     *       name="id",
@@ -330,7 +330,7 @@ class ShopController extends Controller
         * @OA\Delete(
         *     path="/api/manage/shops/{id}",
         *     summary="Delete shop",
-        *     tags={"Manage"},
+        *     tags={"Shops"},
         *     security={{"bearerAuth":{}}},
         *     @OA\Parameter(
         *       name="id",

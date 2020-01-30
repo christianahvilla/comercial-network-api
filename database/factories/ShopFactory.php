@@ -13,10 +13,10 @@ $factory->define(Shop::class, function (Faker $faker) {
         'id' => $faker->uuid,
         'user_id' => User::all()->random()->id,    // get a category id from table categories
         'name' => $faker->company,
-        'image' => $faker->imageUrl(),
+        'image' => $faker->safeEmailDomain,
         'email' => $faker->companyEmail,
         'phone' => $faker->phoneNumber,
-        'web_page' => $faker->url,
+        'web_page' => $faker->imageUrl(),
         'kind' => $faker->kind,
         'street' => $faker->streetName,
         'zip_code' => $faker->postcode,
