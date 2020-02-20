@@ -11,7 +11,7 @@ class CategoryRepository implements CategoryRepositoryInterface
 {
     public function index()
     {
-        return Category::all();
+        return Category::orderBy('category')->get();
     }
 
     public function show($id)
@@ -21,8 +21,7 @@ class CategoryRepository implements CategoryRepositoryInterface
 
     public function store(CategoryStore $category)
     {
-        Category::create($category->all());
-        return 201;
+        return Category::create($category->all());
     }
 
     public function update(CategoryUpdate $category, $id)
@@ -34,8 +33,6 @@ class CategoryRepository implements CategoryRepositoryInterface
 
     public function destroy($id)
     {
-        $category = Category::findOrFail($id);
-        $category->delete();
-        return 204;
+        return Category::destroy($id);
     }
 }

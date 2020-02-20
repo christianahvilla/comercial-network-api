@@ -22,8 +22,8 @@ class CreateProductsTable extends Migration
             $table->text('image');
             $table->integer('stock');
             $table->timestamps();
-            $table->foreign('category_id')->references('id')->on('categories');
-            $table->foreign('shop_id')->references('id')->on('shops');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

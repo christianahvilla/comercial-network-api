@@ -11,7 +11,7 @@ class UserRepository implements UserRepositoryInterface
 {
     public function index()
     {
-        return User::all();
+        return User::where('role', '<>', 'customer');
     }
 
     public function show($id)
@@ -21,8 +21,7 @@ class UserRepository implements UserRepositoryInterface
 
     public function store(UserStore $user)
     {
-        User::create($user->all());
-        return 201;
+        return User::create($user->all());
     }
 
     public function put(UserUpdate $user, $id)
@@ -34,8 +33,6 @@ class UserRepository implements UserRepositoryInterface
 
     public function delete($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
-        return 204;
+        return User::destroy($id);
     }
 }
