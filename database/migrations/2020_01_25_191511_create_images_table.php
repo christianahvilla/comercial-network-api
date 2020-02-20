@@ -18,7 +18,7 @@ class CreateImagesTable extends Migration
             $table->uuid('shop_id');
             $table->text('url');
             $table->timestamps();
-            $table->foreign('shop_id')->references('id')->on('shops');
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

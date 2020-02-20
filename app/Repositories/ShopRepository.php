@@ -11,7 +11,7 @@ class ShopRepository implements ShopRepositoryInterface
 {
     public function index()
     {
-        return Shop::all();
+        return Shop::orderBy('name')->get();
     }
 
     public function show($id)
@@ -21,8 +21,7 @@ class ShopRepository implements ShopRepositoryInterface
 
     public function store(ShopStore $shop)
     {
-        Shop::create($shop->all());
-        return 201;
+        return Shop::create($shop->all());
     }
 
     public function update(ShopUpdate $shop, $id)
@@ -36,14 +35,11 @@ class ShopRepository implements ShopRepositoryInterface
     {
         $shop = Shop::findOrFail($id);
         $shop->enabled = 0;
-        $shop->update($shop->all());
-        return 201;
+        return $shop->update($shop->all());
     }
 
     public function destroy($id)
     {
-        $image = Shop::findOrFail($id);
-        $image->delete();
-        return 204;
+        return Shop::destroy($id);
     }
 }

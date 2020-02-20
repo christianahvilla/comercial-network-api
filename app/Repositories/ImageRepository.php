@@ -21,8 +21,7 @@ class ImageRepository implements ImageRepositoryInterface
 
     public function store(ImageStore $image)
     {
-        Image::create($image->all());
-        return 201;
+        return Image::create($image->all());
     }
 
     public function update(ImageUpdate $image, $id)
@@ -34,8 +33,6 @@ class ImageRepository implements ImageRepositoryInterface
 
     public function destroy($id)
     {
-        $image = Image::findOrFail($id);
-        $image->delete();
-        return 204;
+        return Image::destroy($id);
     }
 }
