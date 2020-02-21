@@ -33,6 +33,8 @@ class ImageRepository implements ImageRepositoryInterface
 
     public function destroy($id)
     {
-        return Image::destroy($id);
+        $image = Image::findOrFail($id);
+        $image->delete();
+        return $image;
     }
 }
