@@ -40,6 +40,8 @@ class ShopRepository implements ShopRepositoryInterface
 
     public function destroy($id)
     {
-        return Shop::destroy($id);
+        $shop = Shop::findOrFail($id);
+        $shop->delete();
+        return $shop;
     }
 }
