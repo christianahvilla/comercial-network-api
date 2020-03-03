@@ -10,7 +10,7 @@ class Shop extends Model
     protected $keyType = 'string';
 
     protected $fillable = [
-        'id', 'user_id', 'name', 'image', 'email', 'phone', 'web_page', 'kind', 'enabled', 'street', 'zip_code', 'neighborhood', 'city', 'long', 'lat', 'products_limit', 'image_limit'
+        'id', 'user_id', 'name', 'image', 'email', 'phone', 'web_page', 'kind', 'enabled', 'street', 'zip_code', 'neighborhood', 'city', 'long', 'lat', 'products_limit', 'images_limit'
     ];
 
     public function products(){
