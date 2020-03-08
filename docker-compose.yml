@@ -1,0 +1,41 @@
+version: "3.7"
+services: 
+    #Laravel App
+    web:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - 8000:80
+        volumes:
+            - ./:/var/www
+            - ./public:/var/www/html
+        networks:
+            - mynet
+        depends_on: 
+            - db
+
+    #MySQL Service
+    db:
+        image: mysql:5.7
+        container_name: db
+        ports:
+            - 3306:3306
+        environment:
+            MYSQL_DATABASE: apartamedb
+            MYSQL_USER: laravel
+            MYSQL_PASSWORD: 0jE#HKnwZofCaHq0rc
+            MYSQL_ROOT_PASSWORD: 6M4M>M9Js()KGt&T>
+        volumes:
+            - mysqldata:/var/lib/mysql/
+        networks:
+            - mynet
+
+#Docker Networks
+networks:
+    mynet:
+        driver: bridge
+#Volumes
+volumes:
+    mysqldata:
+        driver: local
