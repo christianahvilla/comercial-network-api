@@ -26,7 +26,7 @@ class ShopUpdate extends FormRequest
         return [
             'user_id' => 'required|string|max:36',
             'name'  => 'required|string|max:191',
-            'image' => 'required|string', 
+            'image' => 'string|nullable',
             'email' => 'required|email|string',
             'phone' => 'required|string', 
             'web_page' => 'required|string', 
@@ -35,8 +35,8 @@ class ShopUpdate extends FormRequest
             'street' => 'required|string', 
             'neighborhood' => 'required|string', 
             'city' => 'required|string', 
-            'long' => 'required|decimal', 
-            'lat' => 'required|decimal', 
+            'long' => 'required','regex:/^[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/',
+            'lat' => 'required','regex:/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?)$/',
             'products_limit' => 'required|integer', 
             'images_limit' => 'required|integer'
         ];
