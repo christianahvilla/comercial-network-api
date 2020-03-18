@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\Image\ImageStore;
 use App\Http\Requests\Image\ImageUpdate;
 use App\Interfaces\ImageRepositoryInterface;
@@ -86,9 +85,9 @@ class ImageController extends Controller
     * )
     */ 
     
-    public function store(Request $request)
+    public function store(ImageStore $image)
     {
-        return $this->imageRepository->store($request);
+        return $this->imageRepository->index($image);
     }
 
     /**
@@ -165,9 +164,9 @@ class ImageController extends Controller
     * )
     */ 
 
-    public function update(Request $request, $oldUrl)
+    public function update(ImageUpdate $image, $id)
     {
-        return $this->imageRepository->update($request, $oldUrl);
+        return $this->imageRepository->update($image, $id);
     }
 
     /**
@@ -192,8 +191,8 @@ class ImageController extends Controller
     * )
     */
     
-    public function destroy($url)
+    public function destroy($id)
     {
-        return $this->imageRepository->destroy($url);
+        return $this->imageRepository->destroy($id);
     }
 }

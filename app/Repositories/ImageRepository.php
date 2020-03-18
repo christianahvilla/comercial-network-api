@@ -4,8 +4,6 @@ namespace App\Repositories;
 
 use App\Http\Requests\Image\ImageStore;
 use App\Http\Requests\Image\ImageUpdate;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades;
 use App\Interfaces\ImageRepositoryInterface;
 use App\Models\Image;
 
@@ -21,40 +19,22 @@ class ImageRepository implements ImageRepositoryInterface
         return Image::findOrFail($id);
     }
 
-    public function store(Request $request)
+    public function store(ImageStore $image)
     {
-        //return Image::create($image->all());
-        if($request->hasFile('image')) {
-
-            //get filename with extension
-            $filenamewithextension = $request->file('image')->getClientOriginalName();
-
-            //get filename without extension
-            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
-
-            //get file extension
-            $extension = $request->file('image')->getClientOriginalExtension();
-
-            //filename to store
-            $filenametostore = $filename.'_'.time().'.'.$extension;
-
-            //Upload File to s3
-            Facades\Storage::disk('s3')->put($filenametostore, fopen($request->file('image'), 'r+'), 'public');
-
-            return Facades\Storage::disk('s3')->url($filenametostore);
-        }
+        return Image::create($image->all());
     }
 
-    public function update(Request $request, $id)
+    public function update(ImageUpdate $image, $id)
     {
         $oldImage = Image::findOrFail($id);
-        $oldImage->update($request->all());
+        $oldImage->update($image->all());
         return $oldImage;
     }
 
-    public function destroy($url)
+    public function destroy($id)
     {
-        Facades\Storage::disk('s3')->delete($url);
-        return 204;
+        $image = Image::findOrFail($id);
+        $image->delete();
+        return $image;
     }
 }
