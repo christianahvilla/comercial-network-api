@@ -45,8 +45,8 @@ Route::group(['middleware' => 'auth:api'], function() {
                 Route::get('/{id}', 'ImageController@index');
                 Route::get('/specific/{id}', 'ImageController@show');
                 Route::post('/', 'ImageController@store');
-                Route::put('/{id}', 'ImageController@put');
-                Route::delete('/{id}', 'ImageController@delete');
+                Route::put('/{oldUrl}', 'ImageController@update');
+                Route::delete('/{url}', 'ImageController@destroy');
             });
         });
     });
