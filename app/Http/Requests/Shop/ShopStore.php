@@ -27,7 +27,7 @@ class ShopStore extends FormRequest
             'id' => 'required|string|max:36',
             'user_id' => 'required|string|max:36',
             'name'  => 'required|string|max:191',
-            'image' => 'string|nullable',
+            'image' => 'required|string', 
             'email' => 'required|email|string',
             'phone' => 'required|string', 
             'web_page' => 'required|string', 
@@ -35,10 +35,10 @@ class ShopStore extends FormRequest
             'enabled' => 'required|integer',
             'street' => 'required|string', 
             'neighborhood' => 'required|string', 
-            'city' => 'required|string',
-            'long' => 'required','regex:/^[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/',
-            'lat' => 'required','regex:/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?)$/',
-            'products_limit' => 'required|integer',
+            'city' => 'required|string', 
+            'long' => 'required|decimal', 
+            'lat' => 'required|decimal', 
+            'products_limit' => 'required|integer', 
             'images_limit' => 'required|integer'
         ];
     }

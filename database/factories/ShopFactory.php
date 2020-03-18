@@ -13,17 +13,17 @@ $factory->define(Shop::class, function (Faker $faker) {
         'id' => $faker->uuid,
         'user_id' => User::all()->random()->id,    // get a category id from table categories
         'name' => $faker->company,
-        'image' => $faker->imageUrl(),
+        'image' => $faker->safeEmailDomain,
         'email' => $faker->companyEmail,
         'phone' => $faker->phoneNumber,
-        'web_page' => $faker->safeEmailDomain,
+        'web_page' => $faker->imageUrl(),
         'kind' => $faker->kind,
         'street' => $faker->streetName,
         'zip_code' => $faker->postcode,
         'neighborhood' => $faker->citySuffix,
         'city' => $faker->city,
         'long' => $faker->longitude($min = -101, $max = -101),
-        'lat' => $faker->latitude($min = -90, $max = 90),
+        'lat' => $faker->latitude($min = 19, $max = 19),
         'products_limit' => $faker->numberBetween($min = 1, $max = 200),
         'images_limit' => $faker->numberBetween($min = 1, $max = 200)
     ];

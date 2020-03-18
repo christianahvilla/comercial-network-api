@@ -17,7 +17,7 @@ class CreateShopsTable extends Migration
             $table->uuid('id')->primary();
             $table->uuid('user_id');
             $table->string('name');
-            $table->text('image')->nullable();
+            $table->text('image');
             $table->string('email')->unique();
             $table->string('phone')->unique();
             $table->string('web_page');
