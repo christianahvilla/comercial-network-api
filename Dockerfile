@@ -13,8 +13,11 @@ RUN apt-get update && apt-get install -y \
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 RUN docker-php-ext-enable pdo_mysql
 RUN docker-php-ext-install zip
-
-# # Install PHP Composer
+RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+RUN a2enmod rewrite
+RUN service apache2 restart
+ 
+#Install PHP Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 #set our application folder as an environment variable
